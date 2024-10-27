@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def get_root_route(request):
-    return HttpResponse("hello Django")
+    return HttpResponse("Hello WOrld!")

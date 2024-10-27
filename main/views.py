@@ -1,8 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+# views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Product
+from .serializers import ProductSerializer
 
-# Create your views here.
-
-
-def get_root_route(request):
-    return HttpResponse("Hello WOrld!")
+class ProductListView(APIView):
+    def get(self, request):
+        products = Product.objects.all()  # Fetch all products from the database
+        serializer = ProductSerializer(products, many=True)  # Serialize the data
+        return Response(serializer.data, status=status.HTTP_200_OK)

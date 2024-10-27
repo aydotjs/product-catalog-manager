@@ -1,4 +1,7 @@
+# urls.py
 from django.urls import path
-from . import views
+from .views import ProductListView
 
-urlpatterns = [path("/", views.get_root_route)]
+urlpatterns = [
+    path('products/', ProductListView.as_view()),
+]
